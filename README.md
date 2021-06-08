@@ -20,7 +20,20 @@ Milestone 1: Initial Setup & Landing Page - June 8, 2021 Initialize project with
 
 Milestone 2: Content List Page and Detail Pages - June 18, 2021
 
-Set up Tips page, Testimonials page, Add a tip page, Add a Testimonial page, Coursework Details page, Alumni Statistics page, Application Status page, Application page. Get all information loaded and inputted into database.
+-- Tips Page
+-- Testimonials Page
+-- Add a tip page
+-- Add a testimonial page
+-- Coursework Details Page
+-- Alumni Statistics Page
+-- Application Status Page
+-- Application Page
+
+Database:
+ 
+-- Testimonials Table
+-- Tips Table
+-- Applications Table
 
 Milestone 3: User Management - June 22, 2021 Login page, Log out page, and Sign up for an account (applicants) page.
 

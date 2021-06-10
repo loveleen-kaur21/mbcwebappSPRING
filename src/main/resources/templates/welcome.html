@@ -9,10 +9,92 @@
 <body>
 <div th:replace="~{fragments/navigation :: navigation}"></div>
 
+
+<!-- Slideshow container -->
+<div class="slideshow-container">
+
+    <!-- Full-width images with number and caption text -->
+    <div class="mySlides">
+        <div class="numbertext">1 / 3</div>
+        <img src="https://dailyyonder.com/wp-content/uploads/2021/03/Base-Camp-11-scaled.jpeg" style="width:100%">
+        <div class="text">Caption Text</div>
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">2 / 3</div>
+        <img src="https://scontent.fjan1-1.fna.fbcdn.net/v/t1.6435-9/132925738_2892161821016926_8938260991893030844_n.jpg?_nc_cat=101&ccb=1-3&_nc_sid=a26aad&_nc_ohc=RGN0SQyu46kAX-_rnRC&_nc_ht=scontent.fjan1-1.fna&oh=2b553aba1eb1c1d43cffc3ab1f301320&oe=60E6E7E1" style="width:100%">
+        <div class="text">Caption Two</div>
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">3 / 3</div>
+        <img src="https://scontent.fjan1-1.fna.fbcdn.net/v/t1.6435-9/130713346_2880717358828039_5933828629823331393_n.jpg?_nc_cat=109&ccb=1-3&_nc_sid=a26aad&_nc_ohc=wBrPApvlb84AX8TCTGa&_nc_ht=scontent.fjan1-1.fna&oh=eca5a3e200c53e64eb00040cfad300bb&oe=60E870BD" style="width:100%">
+        <div class="text">Caption Three</div>
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">3 / 3</div>
+        <img src="https://scontent.fjan1-1.fna.fbcdn.net/v/t1.6435-9/122161093_2838812576351851_4776445231326012440_n.jpg?_nc_cat=103&ccb=1-3&_nc_sid=a26aad&_nc_ohc=ZQulwdFljLcAX-AOgIk&_nc_ht=scontent.fjan1-1.fna&oh=f09f99976f2df9b906be8cde9b38693c&oe=60E5DCA3" style="width:100%">
+        <div class="text">Caption Three</div>
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">3 / 3</div>
+        <img style="height: 575.781px !important; width: 1000px !important;" src="https://i.ibb.co/vwfQ8VG/IMG-2596.jpg"/>
+        <div class="text">Caption Three</div>
+    </div>
+
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles -->
+<div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+
+
+
   <h1>Meet Base Camp Coding Academy!</h1>
     <p>Base Camp Coding Academy is a hands-on, challenging, and fun program, designed to train high school graduates to be software developers in 12 months.
         For a total of 40 hours per week, students’ curriculum includes Python, HTML, CSS, Django, Java, Javascript, and Spring. In a small classroom setting,
         you will work with real world technologies to learn the fundamentals of coding, app development and the life leadership skills you will need to be
         successful in your career and competitive in the job market.</p>
+
+
+<script>
+    var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>
 </body>
 </html>

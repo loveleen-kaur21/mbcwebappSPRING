@@ -1,30 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:ital,wght@0,900;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap');
 
 
 
-h1 {
-color: red;
-text-align: center;
-}
 
 body {
-background-color: #fffaff;
+background-color: #503D34;
 }
 
 * {box-sizing:border-box}
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1000px;
   position: relative;
   margin: auto;
+  width: 70%;
+  float: right;
 }
 
 /* Hide the images by default */
 .mySlides {
   display: none;
+  max-height: 800px;
+  max-width: 500px;
+
 }
 
+.welcome {
+    position: relative;
+    bottom: -230px;
+    color: white;
+    font-family: 'Alfa Slab One', cursive;
+    size: 90px;
+    width: 30%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#meet {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#head {
+    font-style: italic;
+
+}
 /* Next & previous buttons */
 .prev, .next {
   cursor: pointer;
@@ -54,11 +76,12 @@ background-color: #fffaff;
 
 /* Caption text */
 .text {
-  color: #f2f2f2;
+  color: white;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: left;
 }
 
 /* Number text (1/3 etc) */
@@ -109,12 +132,31 @@ background-color: #fffaff;
     width: 1000px !important;
 }
 
-.image-header {
-    font-family: 'Alegreya Sans SC', sans-serif;
-    font-size: 40px;
-}
 
 .image {
 linear-gradient: rgba(0,0,0,0.5), rgba(0,0,0,0.5);
 linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+height: 600px !important; width: 100% !important;
 }
+
+.image-header{
+    position: relative;
+    bottom: -10px;
+}
+.transbox {
+  margin: 30px;
+  background-color: black;
+  border: 1px solid black;
+  opacity: 0.6;
+}
+
+nav {
+color: transparent !important;
+}
+
+p {
+    color: white;
+    text-align: center;
+    font-family: 'Open Sans Condensed', sans-serif;
+    }
+

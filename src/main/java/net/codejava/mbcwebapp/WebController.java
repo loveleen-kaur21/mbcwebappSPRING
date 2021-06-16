@@ -2,10 +2,13 @@ package net.codejava.mbcwebapp;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 @Controller
 public class WebController {
@@ -14,36 +17,44 @@ public class WebController {
     private UserRepository userRepo;
 
 
+//    @GetMapping("")
+//    public String viewHomePage() {
+//        return "index";
+//    }
     @RequestMapping("")
-    public String viewHomePage() {
-        return "index";
-    }
-    @RequestMapping("/welcome")
     public String Welcome () {
         System.out.println("saying Welcome to Meet Base Camp ....");
         return "welcome.html";
     }
 
-    @RequestMapping("/tips")
+    @GetMapping("/tips")
     public String Tips () {
         return "tips.html";
     }
 
-    @RequestMapping("/testimonials")
+    @GetMapping("/testimonials")
     public String Testimonials () {
         return "testimonials.html";
     }
 
-    @RequestMapping("/coursework")
+    @GetMapping("/coursework")
     public String Coursework () {
         return "courseworkdetails.html";
     }
 
-    @RequestMapping("/register")
+    @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new User());
 
         return "signup_form";
+    }
+
+    @GetMapping("/users")
+    public String listUsers(Model model) {
+        List<User> listUsers = userRepo.findAll();
+        model.addAttribute("listUsers", listUsers);
+
+        return "users";
     }
 
     @PostMapping("/process_register")

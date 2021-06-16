@@ -1,4 +1,4 @@
-package net.codejava;
+package net.codejava.mbcwebapp;
 
 import javax.sql.DataSource;
 
@@ -51,9 +51,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                .usernameParameter("email")
-                .defaultSuccessUrl("/users")
-                .permitAll()
+                    .usernameParameter("email")
+                    .defaultSuccessUrl("/users")
+                    .permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll();
     }

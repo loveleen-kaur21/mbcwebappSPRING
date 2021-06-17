@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
 
 
 
@@ -17,15 +18,13 @@ background-color: #503D34;
 .slideshow-container {
   position: relative;
   margin: auto;
-  width: 70%;
-  float: right;
+  padding: 60px;
+
 }
 
 /* Hide the images by default */
 .mySlides {
   display: none;
-  max-height: 800px;
-  max-width: 500px;
 
 }
 
@@ -33,14 +32,17 @@ background-color: #503D34;
     position: relative;
     bottom: -230px;
     color: white;
-    font-family: 'Alfa Slab One', cursive;
+    font-size: 70px;
     size: 90px;
-    width: 30%;
-    font-family: 'Montserrat', sans-serif;
+    width: 40%;
+    font-family: 'Sigmar One', cursive;
+    float: left;
+    padding-left: 20px;
 }
 
 #meet {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Sigmar One', cursive;
+    font-size: 100px;
 }
 
 #head {
@@ -127,16 +129,12 @@ background-color: #503D34;
   to {opacity: 1}
 }
 
-.slideshowimg {
-    height: 575.781px !important;
-    width: 1000px !important;
-}
 
 
 .image {
 linear-gradient: rgba(0,0,0,0.5), rgba(0,0,0,0.5);
 linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-height: 600px !important; width: 100% !important;
+height: 100% !important; width: 100% !important;
 }
 
 .image-header{
@@ -159,4 +157,21 @@ p {
     text-align: center;
     font-family: 'Open Sans Condensed', sans-serif;
     }
+
+
+.leftSide {
+    width: 35%;
+    height: 100%;
+    float: left;
+    border-collapse: collapse;
+}
+
+.rightSide {
+  width: 65%;
+  height: 100% !important;
+  position: relative;
+  float: right;
+  background-color: #758bfd;
+  border-collapse: collapse;
+}
 

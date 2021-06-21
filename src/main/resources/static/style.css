@@ -187,3 +187,8 @@ p {
 .navbar {
     background-color: #FBFFF1
 }
+
+h1{
+    font-family: 'Kanit', sans-serif;
+    text-align: center;
+}

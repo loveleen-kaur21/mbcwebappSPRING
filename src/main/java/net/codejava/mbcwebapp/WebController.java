@@ -50,11 +50,8 @@ public class WebController {
     }
 
     @GetMapping("/users")
-    public String listUsers(Model model) {
-        List<User> listUsers = userRepo.findAll();
-        model.addAttribute("listUsers", listUsers);
-
-        return "users";
+    public String showHome(Model model) {
+        return "welcome.html";
     }
 
     @PostMapping("/process_register")

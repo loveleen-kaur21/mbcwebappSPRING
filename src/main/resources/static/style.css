@@ -157,7 +157,7 @@ color: transparent !important;
 }
 
 p {
-    color: white;
+    color: black;
     text-align: center;
     font-family: 'Open Sans Condensed', sans-serif;
     }
@@ -189,6 +189,47 @@ p {
 }
 
 h1{
+    padding-top: 30px;
     font-family: 'Kanit', sans-serif;
     text-align: center;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+  padding-left: 100px;
+}
+.grid-item {
+  padding: 20px;
+  font-size: 16px;
+  text-align: center;
+  margin: 10px;
+  padding-right: 50px !important;
+}
+
+.card-img-top {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 150px;
+    max-height: 150px;
+    }
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 10rem;
+    padding: .5rem 0;
+    margin: .125rem 0 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
 }

@@ -42,6 +42,9 @@ public class WebController {
         return "courseworkdetails.html";
     }
 
+    @GetMapping("/apply")
+    public String Application () { return "application.html"; }
+
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new User());

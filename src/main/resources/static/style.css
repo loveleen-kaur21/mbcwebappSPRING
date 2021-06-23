@@ -188,6 +188,9 @@ p {
     background-color: #FBFFF1
 }
 
+#overrideDropdownBoot {
+    right: 0;
+}
 h1{
     padding-top: 30px;
     font-family: 'Kanit', sans-serif;

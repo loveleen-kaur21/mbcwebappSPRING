@@ -1,12 +1,208 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Application</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>Student Application</h1>
+<div class="container text-center">
+    <div>
+        <h1>Student Application</h1>
+    </div>
 
+    <form th:action="@{/application}" th:object="${application}"
+          method="post" style="max-width: 600px; margin: 0 auto;">
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">Email</label>
+                <div class="col-8">
+                    <input type="text" th:field="*{email}" class="form-control" required  />
+                    </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">First Name</label>
+                <div class="col-8">
+                    <input type="text" th:field="*{firstName}" class="form-control" required  />
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">Last Name</label>
+                <div class="col-8">
+                    <input type="text" th:field="*{lastName}" class="form-control" required  />
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">What school are you currently attending?</label>
+                <div class="col-8">
+                    <input type="text" th:field="*{currentSchool}" class="form-control" required  />
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">Gender</label>
+                <div class="col-8">
+                    <input type="text" th:field="*{gender}" class="form-control" required  />
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">Race</label>
+                <div class="col-8">
+                    <input type="text" th:field="*{race}" class="form-control" required  />
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">Ethnicity</label>
+                <div class="col-8">
+                    <input type="text" th:field="*{ethnicity}" class="form-control" required  />
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">Do you have the ability to commute every day?</label>
+                <div class="col-8">
+                    <input type="text" th:field="*{commuteAbility}" class="form-control" required  />
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">When are you expected to graduate?</label>
+                <div class="col-8">
+                    <input type="date" th:field="*{date}" class="form-control" required  />
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">What is your age?</label>
+                <div class="col-8">
+                    <input type="number" th:field="*{age}" class="form-control" required  />
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">Phone Number</label>
+                <div class="col-8">
+                    <input type="number" th:field="*{phoneNumber}" class="form-control" required  />
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">Parent First Name</label>
+                <div class="col-8">
+                    <input type="text" th:field="*{parentFirstName}" class="form-control" required  />
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">Parent Last Name</label>
+                <div class="col-8">
+                    <input type="text" th:field="*{parentLastName}" class="form-control" required  />
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">Parent Email</label>
+                <div class="col-8">
+                    <input type="text" th:field="*{parentEmail}" class="form-control" required  />
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">Parent Phone Number</label>
+                <div class="col-8">
+                    <input type="number" th:field="*{parentPhoneNumber}" class="form-control" required  />
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">What is your current plan?</label>
+                <div class="col-8">
+                    <input type="text" th:field="*{currentPlan}" class="form-control" required  />
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">What is your aptitude?</label>
+                <div class="col-8">
+                    <input type="text" th:field="*{aptitude}" class="form-control" required  />
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">Dedication</label>
+                <div class="col-8">
+                    <input type="text" th:field="*{dedication}" class="form-control" required  />
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">Passion</label>
+                <div class="col-8">
+                    <input type="text" th:field="*{passion}" class="form-control" required  />
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label calss="col-4 col-form-label">Persistence</label>
+                <div class="col-8">
+                    <input type="text" th:field="*{persistence}" class="form-control" required  />
+                </div>
+            </div>
+        </div>
+    </form>
+<!--<form th:action="@{/application}" th:object="${application}"-->
+<!--      method="post" style="max-width: 600px; margin: 0 auto;">-->
+<!--    <label>Email</label>-->
+<!--    <input type="text" th:field="*{email}"  />-->
+<!--    -->
+<!--</form>-->
 
 </body>
 </html>

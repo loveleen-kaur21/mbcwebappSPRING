@@ -43,7 +43,11 @@ public class WebController {
     }
 
     @GetMapping("/apply")
-    public String Application () { return "application.html"; }
+    public String Application (Model model) {
+        model.addAttribute("application", new Application());
+
+        return "application.html";
+    }
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {

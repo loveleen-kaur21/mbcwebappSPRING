@@ -9,7 +9,49 @@
 </head>
 <body>
 <div th:replace="~{fragments/navigation :: navigation}"></div>
-<h1>Testimonials</h1>
+
+<div align="center">
+    <h1>Testimonials List</h1>
+    <br/><br/>
+
+
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>Content</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Graduated Year</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="testimonials: ${listTestimonials}">
+                <td th:text="${testimonials.content}">Content</td>
+                <td th:text="${testimonials.first_name}">First Name</td>
+                <td th:text="${testimonials.last_name}">Last Name</td>
+                <td th:text="${testimonials.graduated_year}">Graduated Year</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br/><br/>
+    <a href="/new_testimonial">Create New Testimonial</a>
+
+    <div class="speechbubble">
+        <p>
+            ::before
+            " Trying this out"
+            <span class="username">
+                ::before
+                "Feuern_D"
+            </span>
+        </p>
+        ::after
+    </div>
+
+
+</div>
 
 </body>
 </html>

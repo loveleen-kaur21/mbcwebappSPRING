@@ -13,7 +13,27 @@
 <body>
 <div th:replace="~{fragments/navigation :: navigation}"></div>
 
-<h1>Tips</h1>
+<div align="center">
+    <h1>Tips</h1>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>Title</th>
+            <th>Body</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tip: ${listTips}">
+            <td th:text="${tip.title}">Title</td>
+            <td th:text="${tip.body}">Body</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<br/><br/>
+<a href="/new_tip">Create New Tip</a>
+
+
 
 </body>
 </html>

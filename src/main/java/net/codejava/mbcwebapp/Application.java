@@ -13,6 +13,9 @@ public class Application {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "user_id", nullable = false, length = 100)
+    private Long userId;
+
     @Column(nullable = false, unique = true, length = 45)
     private String email;
 
@@ -57,7 +60,7 @@ public class Application {
     private String parentEmail;
 
     @Column(name = "parentPhoneNumber", nullable = true, length = 10)
-    private int parentPhoneNumber;
+    private String parentPhoneNumber;
 
     @Column(name = "currentPlan", nullable = false)
     private String currentPlan;
@@ -147,14 +150,12 @@ public class Application {
         this.commuteAbility = commuteAbility;
     }
 
-    public LocalDateTime getGraduation() {
-        return graduation;
-    }
-
     public void setGraduation(LocalDateTime graduation) {
         this.graduation = graduation;
     }
-
+    public LocalDateTime getGraduation() {
+        return graduation;
+    }
     public int getAge() {
         return age;
     }
@@ -195,11 +196,11 @@ public class Application {
         this.parentEmail = parentEmail;
     }
 
-    public int getParentPhoneNumber() {
+    public String getParentPhoneNumber() {
         return parentPhoneNumber;
     }
 
-    public void setParentPhoneNumber(int parentPhoneNumber) {
+    public void setParentPhoneNumber(String parentPhoneNumber) {
         this.parentPhoneNumber = parentPhoneNumber;
     }
 
@@ -242,4 +243,16 @@ public class Application {
     public void setPersistence(String persistence) {
         this.persistence = persistence;
     }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserid(Long userId) {
+        this.userId = userId;
+    }
 }
+
+
+
+

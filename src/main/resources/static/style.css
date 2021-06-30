@@ -236,3 +236,34 @@ h1{
     border: 1px solid rgba(0,0,0,.15);
     border-radius: .25rem;
 }
+
+body .wrapper .speechbubble:nth-child(4n+2) {
+    border-color: #01AD9B;
+}
+
+
+body .wrapper .speechbubble {
+    background-color: #26272b;
+    color: #9fa2a7;
+    font-size: 0.8em;
+    line-height: 1.75;
+    padding: 15px 25px;
+    margin-bottom: 75px;
+    cursor: default;
+}
+body .wrapper .speechbubble:nth-child(2n) {
+    border-left: 5px solid;
+}
+body .wrapper .speechbubble:nth-child(2n):after {
+    content: "";
+    margin-top: -30px;
+    padding-top: 0px;
+    position: relative;
+    bottom: -45px;
+    left: 20px;
+    border-width: 30px 0 0 30px;
+    border-style: solid;
+    border-color: #26272b transparent;
+    display: block;
+    width: 0;
+}

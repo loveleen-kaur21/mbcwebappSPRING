@@ -38,6 +38,12 @@ public class WebController {
         System.out.println("saying Welcome to Meet Base Camp ....");
         return "welcome.html";
     }
+    public String userRole (Model model) {
+        List<User> listUsers = userRepo.findAll();
+        model.addAttribute("listUsers", listUsers);
+        return "welcome.html";
+    }
+
 
     @GetMapping("/coursework")
     public String Coursework () {

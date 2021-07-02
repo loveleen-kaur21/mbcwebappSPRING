@@ -311,6 +311,11 @@ ol{
     list-style: none;
 }
 
+section {
+    display: block;
+    padding: 10px;
+
+}
 
 .flex-container {
     display: flex;

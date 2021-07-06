@@ -34,25 +34,24 @@ public class WebController {
 //        return "index";
 //    }
     @RequestMapping("")
-    public String Welcome () {
+    public String Welcome (@AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
         System.out.println("saying Welcome to Meet Base Camp ....");
-        return "welcome.html";
-    }
-    public String userRole (Model model) {
-        List<User> listUsers = userRepo.findAll();
-        model.addAttribute("listUsers", listUsers);
         return "welcome.html";
     }
 
 
     @GetMapping("/coursework")
-    public String Coursework () {
+    public String Coursework (@AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
+        model.addAttribute("role", userDetails.getRole());
+
         return "courseworkdetails.html";
     }
 
     @GetMapping("/apply")
-    public String Application (Model model) {
+    public String Application (@AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
         model.addAttribute("application", new Application());
+        model.addAttribute("role", userDetails.getRole());
+
 
         return "application.html";
     }
@@ -60,6 +59,7 @@ public class WebController {
     @PostMapping("/application_submitted")
     public String processApplication(Application application, @AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
         Long userId = userDetails.getUserId();
+        model.addAttribute("role", userDetails.getRole());
         application.setUserid(userId);
         appRepo.save(application);
         return "application_success";
@@ -89,15 +89,15 @@ public class WebController {
     }
 
     @RequestMapping("/testimonials")
-    public String viewHomePage(Model model) {
+    public String viewHomePage(@AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
         List<Testimonials> listTestimonials = testimonalsService.findAll();
         model.addAttribute("listTestimonials", listTestimonials);
-
+        model.addAttribute("role", userDetails.getRole());
         return "testimonials";
     }
 
     @RequestMapping("/new_testimonial")
-    public String showNewTestimonialPage(Model model) {
+    public String showNewTestimonialPage(@AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
         Testimonials testimonials = new Testimonials();
         model.addAttribute("testimonials", testimonials);
 
@@ -105,28 +105,28 @@ public class WebController {
     }
 
     @RequestMapping(value = "/save_testimonial", method = RequestMethod.POST)
-    public String save(@ModelAttribute("testimonials") Testimonials testimonials) {
+    public String save(@AuthenticationPrincipal CustomUserDetails userDetails, @ModelAttribute("testimonials") Testimonials testimonials) {
         testRepo.save(testimonials);
 
         return "redirect:/testimonials";
     }
 
     @RequestMapping("/tips")
-    public String viewTips(Model model) {
+    public String viewTips(@AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
         List<Tip> listTips = tipRepo.findAll();
         model.addAttribute("listTips", listTips);
         return "tips";
     }
 
     @RequestMapping(value = "/save_tip", method = RequestMethod.POST)
-    public String save(@ModelAttribute("tip") Tip tip) {
+    public String save(@ModelAttribute("tip") Tip tip, @AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
         tipRepo.save(tip);
 
         return "redirect:/tips";
     }
 
     @RequestMapping("/new_tip")
-    public String showNewTipPage(Model model) {
+    public String showNewTipPage(@AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
         Tip tip = new Tip();
         model.addAttribute("tip", tip);
 

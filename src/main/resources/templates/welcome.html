@@ -18,8 +18,10 @@
         <h1 id="meet">MEET</h1>
         <h1 id="head">BASE CAMP</h1>
         <h1 id="head">CODING ACADEMY</h1>
-        <button type="button" class="btn btn-outline-dark btn-lg"><a href="/register">Register</a></button>
-        <button type="button" class="btn btn-outline-dark btn-lg"><a href="/login">Login</a></button>
+        <div th:if="${#authorization.expression('isAnonymous()')}">
+            <button type="button" class="btn btn-outline-dark btn-lg"><a href="/register">Register</a></button>
+            <button type="button" class="btn btn-outline-dark btn-lg"><a href="/login">Login</a></button>
+        </div>
 
 
 <!--            <h3><a href="/register">Register</a></h3>-->

@@ -29,21 +29,21 @@
 <!--                <li th:if="${authentication.role == 'Admin'}" class="nav-item">-->
 <!--                        <a class="nav-link" href="#">View Student Applications</a>-->
 <!--                </li>-->
-                <li class="nav-item" sec:authorize="isAuthenticated()" style="color: black;" th:each="user: ${listUsers}">
-
-                    <a th:if="${sec:authentication='name' == user.email}" th:switch="${user.role}">
-                        <p th:case="'Admin'">Admin</p>
-                        <p th:case="'User'">User</p>
+                <li class="nav-item" style="color: black;" th:if="${#authorization.expression('isAuthenticated()')}">
+                    <a th:if="${#authorization.expression('isAuthenticated()')}">
+                        <div th:if="${#authentication.getPrincipal().getRole() == 'Admin'}">
+                            <a class="nav-link" href="#">View Student Applications</a>
+                        </div>
+<!--                        <span th:text="${userDetails.role}"></span>-->
+<!--                        <span th:text ="${#authentication.getPrincipal().getRole()}"></span>-->
 
                     </a>
-                        <a th:if="${sec:authentication='name' == user.email}"class="nav-link" href="#">View Student Applications</a>
 
-<!--                        Authenticated as <span sec:authentication="name"></span></div>-->
                 </li>
 
-                <li th:unless="${sec:authentication='name'}">
-                    <div th:text=" 'Hi,' + ${sec:authentication='name'}">Hi, User</div>
-                </li>
+<!--                <li th:unless="${sec:authentication='name'}">-->
+<!--                    <div th:text=" 'Hi,' + ${sec:authentication='name'}">Hi, User</div>-->
+<!--                </li>-->
             </ul>
 
             <div th:if="${#authorization.expression('isAuthenticated()')}" class="collapse navbar-collapse justify-content-end" id="navbarCollapse">

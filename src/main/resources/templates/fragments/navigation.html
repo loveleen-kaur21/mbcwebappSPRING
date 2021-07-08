@@ -32,7 +32,7 @@
                 <li class="nav-item" style="color: black;" th:if="${#authorization.expression('isAuthenticated()')}">
                     <a th:if="${#authorization.expression('isAuthenticated()')}">
                         <div th:if="${#authentication.getPrincipal().getRole() == 'Admin'}">
-                            <a class="nav-link" href="#">View Student Applications</a>
+                            <a class="nav-link" href="/view_all_applications">View Student Applications</a>
                         </div>
 <!--                        <span th:text="${userDetails.role}"></span>-->
 <!--                        <span th:text ="${#authentication.getPrincipal().getRole()}"></span>-->
@@ -51,7 +51,9 @@
                         <span th:text="${#authentication.name}"></span>
                     </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="overrideDropdownBoot">
-                    <a class="dropdown-item" href="/apply">Apply</a>
+                    <a th:if="${#authentication.getPrincipal().getRole() == 'User'}" class="dropdown-item" href="/apply">Apply</a>
+                    <a th:if="${#authentication.getPrincipal().getRole() == 'User'}" class="dropdown-item" th:href="@{'/view_status/' + ${#authentication.name}}">View My Appplication Status</a>
+                    <a th:if="${#authentication.getPrincipal().getRole() == 'Admin'}" class="dropdown-item" href="/view_all_applications">View All Applications</a>
                 </div>
             </div>
             </div>

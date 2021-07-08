@@ -1,13 +1,18 @@
 package net.codejava.mbcwebapp;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class WebController {
@@ -33,6 +38,10 @@ public class WebController {
 //    public String viewHomePage() {
 //        return "index";
 //    }
+
+    @Autowired
+    private ApplicationService appService;
+
     @RequestMapping("")
     public String Welcome (@AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
         System.out.println("saying Welcome to Meet Base Camp ....");
@@ -41,8 +50,7 @@ public class WebController {
 
 
     @GetMapping("/coursework")
-    public String Coursework (@AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
-        model.addAttribute("role", userDetails.getRole());
+    public String Coursework (Model model) {
 
         return "courseworkdetails.html";
     }
@@ -61,6 +69,8 @@ public class WebController {
         Long userId = userDetails.getUserId();
         model.addAttribute("role", userDetails.getRole());
         application.setUserid(userId);
+        application.setStatus("submitted");
+        application.setFullName(application.getFirstName() + " " + application.getLastName());
         appRepo.save(application);
         return "application_success";
     }
@@ -89,15 +99,14 @@ public class WebController {
     }
 
     @RequestMapping("/testimonials")
-    public String viewHomePage(@AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
+    public String viewHomePage(Model model) {
         List<Testimonials> listTestimonials = testimonalsService.findAll();
         model.addAttribute("listTestimonials", listTestimonials);
-        model.addAttribute("role", userDetails.getRole());
         return "testimonials";
     }
 
     @RequestMapping("/new_testimonial")
-    public String showNewTestimonialPage(@AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
+    public String showNewTestimonialPage(Model model) {
         Testimonials testimonials = new Testimonials();
         model.addAttribute("testimonials", testimonials);
 
@@ -105,32 +114,84 @@ public class WebController {
     }
 
     @RequestMapping(value = "/save_testimonial", method = RequestMethod.POST)
-    public String save(@AuthenticationPrincipal CustomUserDetails userDetails, @ModelAttribute("testimonials") Testimonials testimonials) {
+    public String save(@ModelAttribute("testimonials") Testimonials testimonials) {
         testRepo.save(testimonials);
 
         return "redirect:/testimonials";
     }
 
     @RequestMapping("/tips")
-    public String viewTips(@AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
+    public String viewTips(Model model) {
         List<Tip> listTips = tipRepo.findAll();
         model.addAttribute("listTips", listTips);
         return "tips";
     }
 
     @RequestMapping(value = "/save_tip", method = RequestMethod.POST)
-    public String save(@ModelAttribute("tip") Tip tip, @AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
+    public String save(@ModelAttribute("tip") Tip tip, Model model) {
         tipRepo.save(tip);
 
         return "redirect:/tips";
     }
 
     @RequestMapping("/new_tip")
-    public String showNewTipPage(@AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
+    public String showNewTipPage(Model model) {
         Tip tip = new Tip();
         model.addAttribute("tip", tip);
 
         return "new_tip";
     }
+
+    @GetMapping("/view_all_applications")
+    public String listApplications(Model model) {
+        List<Application> listApplications = appRepo.findAll();
+        model.addAttribute("listApplications", listApplications);
+        return "view_all_applications";
+    }
+
+    @GetMapping("/view_status/{email}")
+    public String viewStatus(@PathVariable(name = "email") String email, Model model) {
+        Optional<Application> application = Optional.ofNullable(appRepo.findByEmail(email));
+        System.out.println(email);
+        if (application.isPresent()) {
+            model.addAttribute("application", application.get());
+            return "view_status";
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showUpdateForm(@PathVariable(name = "id") Long id, Model model) {
+        Optional<Application> application = appRepo.findById(id);
+        if (application.isPresent()) {
+            model.addAttribute("application", application.get());
+            return "edit_application";
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(value = "/edit/status", method = RequestMethod.POST)
+    public String edit(Application newApplication) {
+        Application oldApplication = appService.get(newApplication.getId());
+        oldApplication.setStatus(newApplication.getStatus());
+
+        appRepo.save(oldApplication);
+        return "redirect:/view_all_applications";
+    }
+
+//    @PostMapping("/update/{id}")
+//    public String updateUser(@PathVariable("id") long id, @Valid User user,
+//                             BindingResult result, Model model) {
+//        if (result.hasErrors()) {
+//            user.setId(id);
+//            return "update-user";
+//        }
+//
+//        userRepository.save(user);
+//        return "redirect:/index";
+//    }
+
 }
 

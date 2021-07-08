@@ -77,6 +77,28 @@ public class Application {
     @Column(name = "persistence", nullable = false)
     private String persistence;
 
+    @Column(name = "status", nullable = false)
+    private String status;
+
+    @Column(name = "full_name", nullable = false)
+    private String fullName;
+
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public Long getId() {
         return id;
@@ -251,6 +273,7 @@ public class Application {
     public void setUserid(Long userId) {
         this.userId = userId;
     }
+
 }
 
 

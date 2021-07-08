@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Status</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+
+    <h1>Update Status</h1>
+    <br />
+    <form action="#" th:action="@{/edit/status}" th:object="${application}"
+          method="post">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Application ID:</td>
+                <td>
+                    <input type="hidden" th:field="*{id}" />
+                </td>
+            </tr>
+            <tr>
+                <td>Applicant First Name:</td>
+                <td>
+                    <input type="text" th:field="*{firstName}" readonly />
+                </td>
+            </tr>
+            <tr>
+                <td>Applicant Last Name</td>
+                <td><input type="text" th:field="*{lastName}" readonly /></td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>
+                    <select th:field="*{status}">
+                        <option th:value="submitted" th:text="Submitted"></option>
+                        <option th:value="approved" th:text="Approved"></option>
+                        <option th:value="rejected" th:text="Rejected"></option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <button type="submit">Submit</button>
+
+    </form>
+</div>
+
+
+</body>
+</html>

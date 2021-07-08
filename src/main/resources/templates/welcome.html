@@ -13,14 +13,24 @@
 </head>
 <body>
     <div th:replace="~{fragments/navigation :: navigation}"></div>
-    <div class="container">
+    <section class="container">
     <div class="welcome leftSide">
         <h1 id="meet">MEET</h1>
         <h1 id="head">BASE CAMP</h1>
         <h1 id="head">CODING ACADEMY</h1>
+
+        <p id="description">A hands-on, challenging, and fun program designed to train high school graduates to be software developers in 12 months. In a small classroom setting for 40 hours a week,
+            you will work with real world technologies to learn the fundamentals of coding, app development and the life leadership skills you will need to be
+            successful in your career and competitive in the job market.</p>
+
         <div th:if="${#authorization.expression('isAnonymous()')}">
             <button type="button" class="btn btn-outline-dark btn-lg"><a href="/register">Register</a></button>
             <button type="button" class="btn btn-outline-dark btn-lg"><a href="/login">Login</a></button>
+        </div>
+        <div th:if="${#authorization.expression('isAuthenticated()')}">
+            <form th:action="@{/logout}" method="post">
+                <button type="button" class="btn btn-outline-dark btn-lg"><input type="submit" value="Sign Out" /></button>
+            </form>
         </div>
 
 
@@ -32,6 +42,12 @@
     <div class="slideshow-container rightSide">
 
         <!-- Full-width images with number and caption text -->
+        <div class="mySlides">
+            <img class="image" th:src="@{/images/basecamp.jpeg}"/>
+        </div>
+        <div class="mySlides">
+            <img class="image" th:src="@{/images/cspire.jpg}"/>
+        </div>
         <div class="mySlides">
             <img class="image" th:src="@{/images/Post2.jpeg}"/>
         </div>
@@ -110,15 +126,14 @@
       dots[slideIndex-1].className += " active";
     }
     </script>
-    </div>
+    </section>
 
-<!--    <div id="description">-->
-<!--        <p>Base Camp Coding Academy is a hands-on, challenging, and fun program, designed to train high school graduates to be software developers in 12 months.-->
-<!--            For a total of 40 hours per week, students’ curriculum includes Python, HTML, CSS, Django, Java, Javascript, and Spring. In a small classroom setting,-->
-<!--            you will work with real world technologies to learn the fundamentals of coding, app development and the life leadership skills you will need to be-->
-<!--            successful in your career and competitive in the job market.</p>-->
+<!--    <section id="description">-->
 
-<!--    </div>-->
+
+
+
+<!--    </section>-->
 
 
 

@@ -12,14 +12,16 @@
 <body>
 <div th:replace="~{fragments/navigation :: navigation}"></div>
 
-    <h1>Update Status</h1>
-    <br />
-    <form action="#" th:action="@{/edit/status}" th:object="${application}"
-          method="post">
 
-        <table border="0" cellpadding="10">
+<h1 style="text-align: center;" class="center">Update Status</h1>
+<br />
+<div class="vertical-center" style="padding-left: 510px;">
+    <form  action="#" th:action="@{/edit/status}" th:object="${application}"
+           method="post" class="center">
+
+        <table border="0" cellpadding="10" class="center">
             <tr>
-                <td>Application ID:</td>
+                <!--                <td>Application ID:</td>-->
                 <td>
                     <input type="hidden" th:field="*{id}" />
                 </td>
@@ -31,7 +33,7 @@
                 </td>
             </tr>
             <tr>
-                <td>Applicant Last Name</td>
+                <td>Applicant Last Name:</td>
                 <td><input type="text" th:field="*{lastName}" readonly /></td>
             </tr>
             <tr>
@@ -45,7 +47,11 @@
                 </td>
             </tr>
         </table>
-        <button type="submit">Submit</button>
+
+        <div style="padding-top: 50px; margin-left: 150px;">
+            <button type="submit" class="btn btn-info">Submit</button>
+
+        </div>
 
     </form>
 </div>
@@ -53,3 +59,5 @@
 
 </body>
 </html>
+
+

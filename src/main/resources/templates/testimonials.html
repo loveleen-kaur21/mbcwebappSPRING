@@ -46,7 +46,9 @@
             </div>
     </div>
 
-    <button type="button" class="btn btn-outline-dark"><a href="/new_testimonial">Create New Testimonial</a></button>
+    <div th:if="${#authorization.expression('isAuthenticated()')}">
+        <button type="button" class="btn btn-outline-dark"><a href="/new_testimonial">Create New Testimonial</a></button>
+    </div>
 
 
 </div>

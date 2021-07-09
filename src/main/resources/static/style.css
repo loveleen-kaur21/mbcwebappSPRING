@@ -43,7 +43,7 @@ background-color: #f8f9fa;
     width: 40%;
     font-family: 'Kanit', sans-serif;
     float: left;
-    padding-left: 20px;
+    padding-right: 100px;
 }
 
 #meet {
@@ -220,10 +220,15 @@ p {
 #overrideDropdownBoot {
     right: 0;
 }
-h1{
-    padding-top: 10px;
+.welcome h1{
     font-family: 'Kanit', sans-serif;
     text-align: center;
+    font-size: 35px;
+}
+
+.center {
+    text-align: center;
+    align: center;
 }
 .grid-container {
   display: grid;
